@@ -13,3 +13,5 @@ requests == 2.25.0
 # C:\Users\divim\Desktop\Programming\Spotify\Spotipy\spotifythebestof\main\Spotipy_PlaylistMiner.py: 38,39,41
 # C:\Users\divim\Desktop\Programming\Spotify\Spotipy\spotifythebestof\main\__init__.py: 3
 spotipy == 2.16.0
+
+gunicorn == 20.0.4
