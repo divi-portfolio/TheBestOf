@@ -1,0 +1,67 @@
+{%extends "layout_thebestof.html"%}
+
+{%block content%}
+
+<body class="table"> 
+    
+    <h1> Top Playlists For: {{usersearch}} </h1>
+    <p>
+         <b>{{totalPlaylists}}</b> playlists selected.
+         <b>{{total_tracks}}</b> Total Tracks Found. 
+    </p>
+        
+    <p> Aggregating all tracks can take 2-5 minutes. The longer you wait, the better your results. </p>
+    
+    
+    
+    <form action="/collectTracks" method="POST">
+        <p> <i>Search Quality:</i> 
+        <select name="numOfPlaylists">
+            <option value= .35 >Good [Fast]</option>
+            <option value= .6 >Better</option>
+            <option value= .8 >Thorough</option>
+            <option value= 1 >Best [90 seconds]</option>
+        </select>
+        
+         <!-- <i>Number Of Tracks:</i> 
+            <select name="numOfTracks">
+                <option value= 25 >25</option>
+                <option value= 50 >50</option>
+                <option value= 100 >100</option>
+                <option value= 250 >250</option>
+                <option value= 500 >500</option>
+            </select> -->
+        </p>       
+    
+    <input type="submit" id="submit" value="Find Top Tracks"/>
+    </form>
+    
+    
+    <p> Click <b>Find Top Tracks</b> to start collecting the top tracks.</p>
+
+    <table>
+    <thead>
+        <tr>
+            <th> # </th>
+            <th>Playlist name</th>
+            <th># of Songs</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for uri,(name,numSongs) in playlists_dict.items() %}
+        
+        <tr>
+            <td> {{loop.index0 + 1}}</td>
+            <td > <a href={{uri}}>{{name}}</a> </td>
+            <td > {{numSongs}} </td>
+           
+        </tr>
+        {% endfor %}
+
+    </tbody>
+    </table>
+</body>
+
+
+{% endblock %}

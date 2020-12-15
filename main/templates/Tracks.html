@@ -1,0 +1,49 @@
+{%extends "layout_thebestof.html"%}
+
+{%block content%}
+
+<body class="table"> 
+    
+    <h1> Top 250 {{user_search}} Tracks  </h1>
+    <p> Click <b> Create Playlist </b> to save into your account.</p>
+    
+    <form action="/savePlaylist"  method="POST">
+        
+         <i> How many songs do you want? </i> 
+            <select name="numOfTracks">
+                <option value= 25 >25</option>
+                <option value= 50 >50</option>
+                <option value= 100 >100</option>
+                <option value= 250 >250</option>
+            </select>
+        <p></p>
+        
+    <input type="submit" id="submit" value="SAVE PLAYLIST TO SPOTIFY"/>
+        <p></p>
+      
+    </form>
+    <table>
+    <thead>
+        <tr>
+            <th> # </th>
+            <th> Track Name</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        {% for (uri,name) in uniqueTracks_dict.items() %}
+                
+        <tr>
+            <td> {{ loop.index0 +1}} </td>
+            <td > <a href={{uri}}>{{name}}</a> </td>
+                       
+        </tr>
+        {% endfor %}
+
+    </tbody>
+    </table>
+</body>
+
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{%extends "layout_thebestof.html"%}
+
+{%block content%}
+
+<body class="table"> 
+    
+    <h1> {{user_search}} Playlist Saved  </h1>
+    
+    <form action="{{playlistURI}}">
+        <input type="submit" id="submit" value="Listen on Spotify" />
+    </form>
+
+
+</body>
+
+
+{% endblock %}

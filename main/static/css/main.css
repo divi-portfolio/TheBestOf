@@ -1,0 +1,214 @@
+*{
+    font-family: 'Work Sans', sans-serif;
+    background-color: transparent;
+    line-height: 1.6;
+}
+
+h1{
+
+    font-size: 400%;
+    font-weight: 1000;
+    margin-bottom: 0%;
+}
+
+h1,h2,h3,p{
+    text-align: center;
+    
+}
+
+a{
+    color:#1DB954;
+}
+a:hover, a:visited, a:link, a:active
+{
+    text-decoration: none;
+}
+
+p{
+    font-weight: 500;
+    width: 70%;
+    margin-left:15%;
+    font-size: 120%;
+}
+
+
+body {
+    background: white;
+    position: relative;
+    text-align: center;
+} 
+
+#footer{
+    padding-bottom: 25px;
+    
+    color: rgb(171, 165, 165);
+    margin-top:10px;
+    width: 100%;
+    height: 18px;
+    font-size:12px;
+}
+
+
+/* ====================================
+BUTTONS FORMS
+===================================== */
+
+#submit{
+    background-color: #1DB954    ;
+    border-radius:20px;
+    position: relative;
+    width:15%;
+    height: 2.5rem;
+    color: #fff;
+    font-size: .9rem;
+    text-decoration: none;
+    cursor: pointer;
+    border:none;
+    font-weight: bolder;
+    margin-top:0%;
+    text-transform: uppercase;
+}
+
+#submit:hover{
+    background-color: #2bd968; 
+}
+
+#input{
+    border-color: #dad4d4;
+    border-width: thin;
+    border-radius: 0%;
+    width: 40%;
+    height: 3.5em;
+    text-overflow: ellipsis;
+}
+
+#input::placeholder{
+    color:grey;
+    text-align: center;
+    font-size: 1rem;
+}
+
+#input:focus::placeholder{
+    color:transparent;
+}
+
+
+
+/* ====================================
+TABLE
+===================================== */
+
+
+body.table {
+    background: white;
+    padding-left: 1rem; */
+    padding-right: 1rem; */
+    position: relative;
+    } 
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+tr:nth-of-type(even) { 
+    background: #fafafade	; 
+  }
+
+th { 
+    background: #43b647; 
+    color: #F0F0F0	; 
+    font-weight: 200; 
+    white-space: nowrap
+    
+}
+
+td, th { 
+    padding: .2rem; 
+    border: .1rem solid #F0F0F0	; 
+    text-align: left; 
+}
+
+tr:hover{
+    background-color: #a4ebc3;
+}
+
+
+/* 
+====================================
+FORM
+==================================== */
+
+
+.form-inline {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+
+
+
+/* 
+====================================
+NAVIGATION BAR
+==================================== */
+/* Add a black background color to the top navigation */
+.topnav {
+    background-color: black;
+    overflow:hidden;
+    position: relative;
+}
+  
+  /* Style the links inside the navigation bar */
+  .topnav a {
+    float: left;
+    display:block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 1rem 1rem;
+    text-decoration: none;
+    font-size: 1.5rem;
+    margin: 0;
+    
+  }
+
+  
+  
+  /* Change the color of links on hover */
+  .topnav a:hover {
+    background-color: white;
+    color: black;
+  }
+  
+  /* Add an active class to highlight the current page */
+   /* .topnav a.active {
+    background-color: #4CAF50;
+    color: white;
+  }  */
+  
+  /* Hide the link that should open and close the topnav on small screens */
+.topnav .logo-image{
+    border-radius: 0%;
+    overflow: hidden;
+    padding: 1em 1em;
+    float:left;
+
+    }
+
+=====================================
+MEDIA QUERIES
+===================================== */
+@media screen and (max-width: 768px) {
+    #submit, #input{
+        display: inline;
+        width: 75%;
+        float: none;
+    }
+/* 
+======================================
+RESOURCES
+====================================== */
+
+/* https://neumorphism.io/#6c54a6 */

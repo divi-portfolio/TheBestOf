@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+    <title>The Best Of</title>
+</head>
+<body>
+    
+
+<div class="topnav" id="myTopnav">
+
+    <a class="topnav" href="/">
+        <div class="topnav.logo-image">
+                <img src='static/images/spotify_icon.png' class="img-fluid" style="width:3em;height:.9em;">
+        </div>
+    </a>
+        
+    <b><a href="/" class="active">| THE BEST OF</a> </b>
+    <!-- <a href="javascript:void(0);" class="icon" onclick="myFunction()"></a> -->
+
+    
+
+</div>
+
+{%block content%} 
+{%endblock%}
+
+
+</body>
+
+<div id="footer">
+    <br><br>
+    <b>
+    Powered by <a href="http://spotify.com">Spotify</a>.
+    Created by <a href="https://www.linkedin.com/in/divimangla/">Divi Mangla</a>.
+    <br>
+    <a href="/about"> About this Project.</a>
+    </b>
+  </div>
+
+
+
