@@ -37,7 +37,16 @@ def index():
     if session.get("access_token") is None:
         return render_template('login.html')
     else:
-        return render_template("index.html",playlists_created = 100, songs_added = 5000) 
+        conn = sqlite3.connect("playlists_created_db.db")
+        c = conn.cursor()
+        
+        sql_query = c.execute("SELECT *  FROM playlists_created") ###SQL Query
+        playlists_created = sum([k[0] for k in sql_query])
+        
+        sql_query = c.execute("SELECT *  FROM playlists_created") ###SQL Query
+        songs_added = sum([x[1] for x in sql_query])
+        
+        return render_template("index.html",playlists_created = playlists_created, songs_added = songs_added) 
     
 @app.route('/login')
 def login():

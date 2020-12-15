@@ -26,8 +26,8 @@ def playlists_created(numofPlaylists,numofSongs):
     c.execute("INSERT INTO playlists_created(numofPlaylists, numofSongs) VALUES (? , ?)",
                   ( numofPlaylists, numofSongs))
     conn.commit()
-    # c.close()
-    # conn.close()
+    c.close()
+    conn.close()
 
 
 #c.close()  
