@@ -55,7 +55,8 @@ def login():
 ### --------------------USER AUTHORIZATION
 cid ="b67120ec7a07409fad337b38ff8c996d" 
 secret = "69b703aa3746448ab5d3714fdc2c4994"
-r_uri = "http://localhost:5000/callback"
+#r_uri = "http://localhost:5000/callback"
+r_uri = "https://spotifythebestof.herokuapp.com/callback"
 scope = "user-library-read playlist-read-private playlist-modify-public playlist-modify-private user-top-read "
 scope = scope.replace(" ", "%20")
 
