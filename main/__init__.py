@@ -35,7 +35,17 @@ app.config['JSON_SORT_KEYS'] = False
 @app.route('/')
 def index():
     if session.get("access_token") is None:
-        return render_template('login.html')
+        conn = sqlite3.connect("playlists_created_db.db")
+        c = conn.cursor()
+
+        sql_query = c.execute("SELECT *  FROM playlists_created") ###SQL Query
+        playlists_created = sum([k[0] for k in sql_query])
+
+        sql_query = c.execute("SELECT *  FROM playlists_created") ###SQL Query
+        songs_added = sum([x[1] for x in sql_query])
+
+        return render_template("login.html",playlists_created = playlists_created, songs_added = songs_added)
+
     else:
         conn = sqlite3.connect("playlists_created_db.db")
         c = conn.cursor()
@@ -48,9 +58,19 @@ def index():
         
         return render_template("index.html",playlists_created = playlists_created, songs_added = songs_added) 
     
-@app.route('/login')
-def login():
-    return render_template('login.html')
+# @app.route('/login')
+# def login():
+
+#     conn = sqlite3.connect("playlists_created_db.db")
+#     c = conn.cursor()
+
+#     sql_query = c.execute("SELECT *  FROM playlists_created") ###SQL Query
+#     playlists_created = sum([k[0] for k in sql_query])
+
+#     sql_query = c.execute("SELECT *  FROM playlists_created") ###SQL Query
+#     songs_added = sum([x[1] for x in sql_query])
+
+#     return render_template("login.html",playlists_created = playlists_created, songs_added = songs_added)
 
 ### --------------------USER AUTHORIZATION
 cid ="b67120ec7a07409fad337b38ff8c996d" 
