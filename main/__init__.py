@@ -183,6 +183,8 @@ def savePlaylist():
     createPlaylist_get_Id = create_playlist_add_tracks( playlistName=playlistName,uniqueTracks=uniqueTracks, access_token= access_token, numofSongs=numOfTracks,id=id)
     
     ##SQL
+    conn = sqlite3.connect("playlists_created_db.db")
+    c = conn.cursor()
 
     create_tables()
     playlists_created(1,numOfTracks)
