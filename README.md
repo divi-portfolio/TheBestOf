@@ -1,2 +1,10 @@
-#The Best Of
-I'm 90% done. Need to fix OAuth code verification function, hide secret key, host on Heroku and fix the server-side sesions
+Working Website: https://spotifythebestof.herokuapp.com/
+
+# TO DO:
+Develop real README
+
+Remove API keys
+
+Fix CSS bugs + mobile friendliness
+
+Fix OAuth code verification function/storage
