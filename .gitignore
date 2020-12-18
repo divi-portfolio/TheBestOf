@@ -1,4 +1,4 @@
 *.cache
 *.log
-*/_pycache_
+*/__pycache__
 **/flask_session/*
