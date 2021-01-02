@@ -31,10 +31,12 @@ Session(app)
 ##SESSION_PERMANENT = 'FALSE' not sure when to use, or if I should change the PERMANENT_SESSION_LIFETIME = 600 seconds
 app.config['JSON_SORT_KEYS'] = False
 
-#home page
+
+###home page
+### GOAL: Check's for user access token, if exists, goes to home page else re-directs to login page
 @app.route('/')
 def index():
-    if session.get("access_token") is None:
+    if session.get("access_token") is None:  
         conn = sqlite3.connect("playlists_created_db.db")
         c = conn.cursor()
 
@@ -44,7 +46,7 @@ def index():
         sql_query = c.execute("SELECT *  FROM playlists_created") ###SQL Query
         songs_added = sum([x[1] for x in sql_query])
 
-        return render_template("login.html",playlists_created = playlists_created, songs_added = songs_added)
+        return render_template("login.html",playlists_created = playlists_created, songs_added = songs_added)  ###ACCESS TOKEN NOT FOUND: LOGIN PAGE
 
     else:
         conn = sqlite3.connect("playlists_created_db.db")
@@ -56,25 +58,11 @@ def index():
         sql_query = c.execute("SELECT *  FROM playlists_created") ###SQL Query
         songs_added = sum([x[1] for x in sql_query])
         
-        return render_template("index.html",playlists_created = playlists_created, songs_added = songs_added) 
+        return render_template("index.html",playlists_created = playlists_created, songs_added = songs_added)  ### ACCESS TOKEN FOUND
     
-# @app.route('/login')
-# def login():
 
-#     conn = sqlite3.connect("playlists_created_db.db")
-#     c = conn.cursor()
-
-#     sql_query = c.execute("SELECT *  FROM playlists_created") ###SQL Query
-#     playlists_created = sum([k[0] for k in sql_query])
-
-#     sql_query = c.execute("SELECT *  FROM playlists_created") ###SQL Query
-#     songs_added = sum([x[1] for x in sql_query])
-
-#     return render_template("login.html",playlists_created = playlists_created, songs_added = songs_added)
-
-### --------------------USER AUTHORIZATION
+###################### --------------------USER AUTHORIZATION --------------------##############################
 cid ="b67120ec7a07409fad337b38ff8c996d" 
-secret = "69b703aa3746448ab5d3714fdc2c4994"
 #r_uri = "http://localhost:5000/callback"
 r_uri = "https://spotifythebestof.herokuapp.com/callback"
 scope = "user-library-read playlist-read-private playlist-modify-public playlist-modify-private user-top-read "
@@ -91,6 +79,7 @@ code_verifier ="ECEtZV02HFwfo2UbYDmvtV98AxicCSlKSQtbFww8PSWVNnAYmH"
 code_challenge = "g40RsQQwAVI9_biHTQxb5t-2CKNFvMQFN1gmUjKOpWE"
 
 
+### Get's user authorization code
 @app.route('/auth', methods=['GET'])
 def auth():
     # code_verifier,code_challenge = create_code_verifier_challenge()
@@ -100,26 +89,32 @@ def auth():
     # code_challenge = session.get('code_challenge')
     return redirect('https://accounts.spotify.com/authorize' + '?response_type=code' + '&client_id=' + cid + '&redirect_uri=' + r_uri + '&scope=' + scope + '&code_challenge='+str(code_challenge) + '&code_challenge_method=S256')
 
+###SPOTIFY API redirects to this page and provides the access_token in the HTML response. 
+#### PARSE RESPONSE DATA FROM THE URL and redirect to index page
 @app.route('/callback', methods=['GET','POST'])
 def callback():
     code = request.args.get('code')  ##retrieve authorization code -> exchange for access_token -> sp.spotify(auth=acces_tocken) 
     if code is not None:
         # code_verifier = session.get('code_verifier')
         # code_challenge = session.get('code_challenge')
-        #get access token
+        #get access token using REST API
         url = "https://accounts.spotify.com/api/token"
         grant_type = "authorization_code"
         parameters = {'client_id':cid,'grant_type':grant_type, 'code':code, "redirect_uri":r_uri,'code_verifier':code_verifier}
-        response = requests.post(url =url,data=parameters)
+        response = requests.post(url =url,data=parameters)  ### had to import requests
         response_data = response.json()
         access_token = response_data['access_token']
         session['access_token'] = access_token 
         return redirect(url_for('index'))
         
-    else:
+    else: 
         error = request.args.get('error')
         return "Please login again"
-    
+
+###################### --------------------END USER AUTHORIZATION --------------------##############################
+#########################################################################################################################3
+
+
 @app.route('/', methods=['POST','GET']) ### this line takes in the put from the search field on home page and POSTS to
 def index_post():
     user_search = str(request.form['user_search'])
@@ -185,8 +180,8 @@ def savePlaylist():
     ##SQL
     conn = sqlite3.connect("playlists_created_db.db")
     c = conn.cursor()
-
     create_tables()
+
     playlists_created(1,numOfTracks)
     return render_template('Playlist_saved.html', user_search =str(session.get('query')), playlistURI = createPlaylist_get_Id )
 ####-------------------------------------------------------------

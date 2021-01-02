@@ -9,20 +9,24 @@
 import sqlite3
 
 
-conn = sqlite3.connect("playlists_created_db.db")
-c = conn.cursor()
+# conn = sqlite3.connect("playlists_created_db.db")
+# c = conn.cursor()
 
-conn.commit()
+# conn.commit()
 
-conn = sqlite3.connect("playlists_created_db.db", check_same_thread=False)
-c = conn.cursor()
+# conn = sqlite3.connect("playlists_created_db.db", check_same_thread=False)
+# c = conn.cursor()
 
 ##  CREATE TABLES:  Playlists,  all_tracks
 def create_tables():
+    conn = sqlite3.connect("playlists_created_db.db", check_same_thread=False)
+    c = conn.cursor()
     c.execute('CREATE TABLE IF NOT EXISTS playlists_created(numofPlaylists INT, numofSongs INT)')
+    conn.commit()
     
 def playlists_created(numofPlaylists,numofSongs):
-    
+    conn = sqlite3.connect("playlists_created_db.db", check_same_thread=False)
+    c = conn.cursor()
     c.execute("INSERT INTO playlists_created(numofPlaylists, numofSongs) VALUES (? , ?)",
                   ( numofPlaylists, numofSongs))
     conn.commit()

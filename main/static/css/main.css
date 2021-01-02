@@ -5,9 +5,8 @@
 }
 
 h1{
-
     font-size: 400%;
-    font-weight: 1000;
+    font-weight: 4000;
     margin-bottom: 0%;
 }
 
@@ -31,11 +30,12 @@ p{
     font-size: 120%;
 }
 
-
 body {
     background: white;
     position: relative;
     text-align: center;
+    display: inline;
+    width: 100%;
 } 
 
 #footer{
@@ -48,7 +48,6 @@ body {
     font-size:12px;
 }
 
-
 /* ====================================
 BUTTONS FORMS
 ===================================== */
@@ -57,7 +56,7 @@ BUTTONS FORMS
     background-color: #1DB954    ;
     border-radius:20px;
     position: relative;
-    width:15%;
+    width:20%;
     height: 2.5rem;
     color: #fff;
     font-size: .9rem;
@@ -92,22 +91,38 @@ BUTTONS FORMS
     color:transparent;
 }
 
+/* ====================================
+SELECT - DROP DOWN
+===================================== */
 
+select {
+    padding-left:5px;
+    height:10%;
+    position:center;
+    border:1px solid #333;
+    width:10%;
+    /* display:block; */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    -ms-appearance: none;
+    border-radius: 0;
+    -webkit-box-shadow: none;
+}
 
 /* ====================================
 TABLE
 ===================================== */
-
-
 body.table {
     background: white;
-    padding-left: 1rem; */
-    padding-right: 1rem; */
-    position: relative;
+    padding-left: .2em; 
+    padding-right: .2em; 
+    position: absolute;
     } 
 
 table{
-    width: 100%;
+    width: 98%;
     border-collapse: collapse;
 }
 
@@ -133,22 +148,16 @@ tr:hover{
     background-color: #a4ebc3;
 }
 
-
 /* 
 ====================================
 FORM
 ==================================== */
-
-
 .form-inline {
-    display: flex;
-    flex-flow: row wrap;
+    display:inline; 
     align-items: center;
     margin: 0;
     padding: 0;
   }
-
-
 
 /* 
 ====================================
@@ -156,39 +165,34 @@ NAVIGATION BAR
 ==================================== */
 /* Add a black background color to the top navigation */
 .topnav {
-    background-color: black;
+    background-color: white;
     overflow:hidden;
-    position: relative;
+    position: top;
+    padding-top: -.0;
+    margin-top: collapse;
+    
 }
   
   /* Style the links inside the navigation bar */
   .topnav a {
     float: left;
     display:block;
-    color: #f2f2f2;
-    text-align: center;
+    color: black;
+    /* text-align: center; */
     padding: 1rem 1rem;
     text-decoration: none;
     font-size: 1.5rem;
     margin: 0;
     
   }
-
-  
   
   /* Change the color of links on hover */
   .topnav a:hover {
     background-color: white;
     color: black;
   }
+
   
-  /* Add an active class to highlight the current page */
-   /* .topnav a.active {
-    background-color: #4CAF50;
-    color: white;
-  }  */
-  
-  /* Hide the link that should open and close the topnav on small screens */
 .topnav .logo-image{
     border-radius: 0%;
     overflow: hidden;
@@ -197,20 +201,15 @@ NAVIGATION BAR
 
     }
 
-=====================================
+/* =====================================
 MEDIA QUERIES
-===================================== */
+=====================================  */
+
 @media screen and (max-width: 768px) {
-    #submit, #input{
+    #submit, #input ,select{
         display: inline;
-        width: 100%;
+        width: 75%;
         float: none;
     }
+}
 
-    
-/* 
-======================================
-RESOURCES
-====================================== */
-
-/* https://neumorphism.io/#6c54a6 */

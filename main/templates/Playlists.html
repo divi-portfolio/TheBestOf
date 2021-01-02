@@ -15,24 +15,16 @@
     
     
     <form action="/collectTracks" method="POST">
-        <p> <i>Search Quality:</i> 
-        <select name="numOfPlaylists">
-            <option value= .35 >Good [Fast]</option>
-            <option value= .6 >Better</option>
-            <option value= .8 >Thorough</option>
-            <option value= 1 >Best [90 seconds]</option>
+         <label>Search Quality:</label>
+            <select name="numOfPlaylists">
+                <option value= .35 >Okay [Fast]</option>
+                <option selected value= .6 >Good</option>
+                <option value= .8 >Thorough</option>
+                <option value= 1 >Best [90 seconds]</option>
         </select>
         
-         <!-- <i>Number Of Tracks:</i> 
-            <select name="numOfTracks">
-                <option value= 25 >25</option>
-                <option value= 50 >50</option>
-                <option value= 100 >100</option>
-                <option value= 250 >250</option>
-                <option value= 500 >500</option>
-            </select> -->
-        </p>       
-    
+        
+    <p></p>
     <input type="submit" id="submit" value="Find Top Tracks"/>
     </form>
     
